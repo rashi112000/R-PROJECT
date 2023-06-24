@@ -1,1 +1,7 @@
 # project code
+getwd()
+library(tidyverse)
+glimpse(X2018_1_)
+names(X2018_1_)
+X2018_1_$`GDP per capita` <- as.factor(X2018_1_$`GDP per capita`)
+class(X2018_1_$`GDP per capit
