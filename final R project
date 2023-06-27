@@ -106,17 +106,23 @@ table(year2018sub$Development)
 
 # We use a barplot to represent it graphically
 barplot(table(year2018sub$Development), main = "Categories based on per capita GDP")
-# The figure shows that the number of developed and developing nations is identical while the number of underdeveloped nations is approximately twice as large. 
+# The figure shows that the number of developed and developing nations is identical while the number of underdeveloped nations is approximately twice as large.
+# Closing the above plot
+dev.off() 
 
 # We can also use grouped boxplot to show different categories
 boxplot(year_2018[,4:9], main="Happiness Factors in 2018",
 xlab="Factors", ylab="Score", col=c("orange","yellow","green","blue","purple","red"))
+# Closing the above plot
+dev.off() 
 
 # and another one, more focused on relation between GDP and Development
 year2018sub %>%
 ggplot(aes(Development, GDP.per.capita))+
 geom_boxplot()+
 theme_bw()
+# Closing the above plot
+dev.off() 
 
 # Now we analyzed relation between life expectancy and development category
 year2018sub %>%
@@ -130,6 +136,9 @@ y = "Average Healthy Life Expectancy")
 
 # As can be seen, the life expectancy is higher in developed nations and decreases as we move into the category of developing and undeveloped nations.  
 
+# Closing the above plot
+dev.off() 
+
 # Let's plot life expectancy with GDP
 # We can use the ggplot2 library to create a scatterplot comparing GDP per capita with healthy life expectancy.
 # Then, we can create the scatterplot using the aes() function to specify the x and y variables.
@@ -141,12 +150,19 @@ y = "Healthy Life Expectancy")
 
 # The correlation between the two is evident since life expectancy rises in tandem with rising GDP per capita. 
 
+# Closing the above plot
+dev.off() 
+
 # We do the same to understand graphically the trend of GDP and Freedom
 ggplot(year2018sub, aes(x = GDP.per.capita, y = Freedom )) +
 geom_point() +
 labs(title = "GDP per Capita vs. Freedom",
 x = "GDP per Capita",
 y = "Freedom")
+
+# Closing the above plot
+dev.off() 
+
 # Since there isn't a clear link between the variables in the earlier graph
 
 # we decided to verify it using pearson correlation test
@@ -168,6 +184,8 @@ glimpse(GDPandHAPPINESS3)
 plot(x= GDPandHAPPINESS3$GDP.per.capita, y = GDPandHAPPINESS3$year_2018Score, xlab = "GDP", ylab = "Happiness rank", main = "Relation between GDP and Happiness index rank")
 # The plot shows a negative relationship between the two, with Happiness ratings falling as GDP rises. 
 
+# Closing the above plot
+dev.off() 
 
 # Analysing the relation between Development category and Happiness Score
 COUNTRYandSCORE <- GDPandHAPPINESS[ , c(5, 6)]
@@ -181,6 +199,9 @@ COUNTRYandSCORE$Development <- factor((COUNTRYandSCORE$Development), levels = c(
 levels(COUNTRYandSCORE$Development)
 barplot(table(COUNTRYandSCORE$Development), main = "Development levels related to the Happiness Score")
 # We can clearly see that Underdeveloped nations have higher happiness score as compared to the countries who are developed.
+
+# Closing the above plot
+dev.off() 
 
 # Hypothesis Testing
 
