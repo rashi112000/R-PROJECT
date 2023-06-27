@@ -222,7 +222,7 @@ glimpse(year2018sub)
 
 table(year2018sub$Development)
 
-# we use a barplot to give it a graphical form
+# we use a barplot to represent it graphically
 
 barplot(table(year2018sub$Development), main = "Categories based on per capita GDP")
 
@@ -241,7 +241,7 @@ year2018sub %>%
 
 library(dplyr)
 
-# then we analyzed relation between life expectancy and development category
+# Now we analyzed relation between life expectancy and development category
 
 year2018sub %>%
   group_by(Development) %>%
@@ -271,15 +271,17 @@ ggplot(year2018sub, aes(x = GDP.per.capita, y = Freedom )) +
        y = "Freedom")
 
 # since for the former graph there's not a precise eye-looking relationship between variables
-# we decided to verify it using pearson correlation test that effectively shows low level of correlation (0.33)
+# we decided to verify it using pearson correlation test
 
 cor.test(year2018sub$GDP.per.capita, year2018sub$Freedom)
+# This effectively shows low level of correlation (0.33)
 
-# then we applyied the same test to GDP and Life expectancy that showed high correlation (0.84)
+# then we applyied the same test to GDP and Life expectancy
 
 cor.test(year2018sub$GDP.per.capita, year2018sub$Life_expectancy)
+# This effectively shows high level of correlation (0.84)
 
-# then we decided to verify relationship between GDP and another parameter (Happiness Index)
+# Now let us look at relationship between GDP and Happiness Index
 
 GDPandHAPPINESS <- cbind(year2018sub, year_2018$Score)
 GDPandHAPPINESS
@@ -294,10 +296,11 @@ plot(x= GDPandHAPPINESS3$GDP.per.capita, y = GDPandHAPPINESS3$year_2018Score, xl
 # hypothesis testing
 # H0 : there's no relation between GDP and Happiness score
 # H1 : there's a relation between them
-# we applied a linear model testing to test our hypothesis that is confirmed (null hypothesis can be rejected) by a very small pvalue (2e-16) and a R-squared of 0.64.
+# we applied a linear model testing to test
 
 GDPandHAPPINESS3 %>%
   lm(GDP.per.capita ~ `year_2018$Score`, data = .) %>% summary()
+# Our hypothesis is confirmed (null hypothesis can be rejected) by a very small pvalue (2e-16) and a R-squared of 0.64.
 
 # then we tried a further analysis relating Development category and Happiness Score that is showing in another way what we saw with the former analysis. Underdeveloped, so the ones with lower GDP have higher Happiness Score.
 
@@ -312,3 +315,4 @@ COUNTRYandSCORE$Development <- factor((COUNTRYandSCORE$Development), levels = c(
 levels(COUNTRYandSCORE$Development)
 barplot(table(COUNTRYandSCORE$Development), main = "Development levels related to the Happiness Score")
  
+ # We can clearly see that Underdeveloped nations have higher happiness score as compared to the countries who are developed. 
