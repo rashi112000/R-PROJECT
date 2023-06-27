@@ -53,7 +53,7 @@ library(GGally)
 
 # Create a data directory that can be reproducible
 getwd()
-setwd("C:/Users/magic/Desktop/Happiness_scores")
+setwd("C:/Users/magic/Desktop/Happiness ranking")
 
 # Importing the dataset
 year_2018 <- read.csv("2018.csv", header = TRUE)
@@ -189,8 +189,6 @@ cor.test(year2018sub$GDP.per.capita, year2018sub$Freedom)
 cor.test(year2018sub$GDP.per.capita, year2018sub$Life_expectancy)
 # The test returned a value of 0.84 indicating a high level of correlation between the two variables
 
-# Observing the relationship between GDP and Happiness index using scatterplot
-
 # Extracting GDP and Happiness score
 
 GDPandHAPPINESS <- cbind(year2018sub, year_2018$Score)
@@ -243,5 +241,4 @@ lm(GDP.per.capita ~ `year_2018$Score`, data = .) %>% summary()
 
 # The result of this hypothesis test is supported by the scatter plot above between GDP per Capita & Happiness Score which shows a negative correlation between the two variables
 
-# Thus, we can say that Countries with higher GDP score higher on the happiness index 
-# because greater economic growth implies higher health expectancy and freedom to make independent choices
+# Thus, we can say that countries with higher GDP score higher on the happiness index because greater economic growth implies higher health expectancy and freedom to make independent choices
