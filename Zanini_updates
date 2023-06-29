@@ -578,9 +578,16 @@ year2018sub %>%
   geom_boxplot()+
   theme_bw()
 
+# Comment on the graph
+# Barplot shows the data distribution of 3 categories: Developed, Developing and Underdeveloped based on their GDP. 
+# None of them have a normal distribution. Developed and Underdeveloped category is negatively skewed while developing category is positively skewed.
+# Underdeveloped category has the largest interquartile range showing how dispered the data is. Developing and Developed categories have comparable interquartile range. 
+# Saving the graph
+ggsave("DEVELOPMENT.png", width = 15, height = 7)
+
 glimpse(year2018sub)
 
-# boxplot for relation Development and Life_expectancy
+# boxplot for understanding the relation between Development and Life_expectancy
 
 year2018sub %>%
   ggplot(aes(Development, Life_expectancy))+
@@ -589,13 +596,6 @@ year2018sub %>%
 
 # Comment on boxplot 
 # it shows a concentration of higher level of Life expectancy for the developed countries and a lower one for underdeveloped. it is another way to relate life expectancy and GDP
-
-# Comment on the graph
-# Barplot shows the data distribution of 3 categories: Developed, Developing and Underdeveloped based on their GDP. 
-# None of them have a normal distribution. Developed and Underdeveloped category is negatively skewed while developing category is positively skewed.
-# Underdeveloped category has the largest interquartile range showing how dispered the data is. Developing and Developed categories have comparable interquartile range. 
-# Saving the graph
-ggsave("DEVELOPMENT.png", width = 15, height = 7)
 
 
 # Analyzing the relation between life expectancy and development category
@@ -686,15 +686,14 @@ barplot(table(COUNTRYandSCORE$Development), main = "Development levels related t
 # We can clearly see that Underdeveloped nations have higher happiness score as compared to the countries who are developed.
 
 # Testing our Hypothesis 3
-# Hypothesis 2: There is a strong re;ation between GDP per capita and Happiness Score
+# Hypothesis 2: There is a strong relation between GDP per capita and Happiness Score
 # H0: there is no correlation between the GDP per Capita and Happiness Score
 # H1: there is a strong correlation: GDP per Capita and Happiness Score
-
 
 # We applied the correlation test to prove our hypothesis
 GDPandHAPPINESS3
 cor.test(GDPandHAPPINESS3$GDP.per.capita, GDPandHAPPINESS3$`year_2018$Score`)
-# The test returned a valueof 0.80 indicating strong correlation between GDP per Capita & Happiness Score
+# The test returned a value of 0.80 indicating strong correlation between GDP per Capita & Happiness Score
 # Therefore, H0, the null hypothesis can be rejected
 # Thus, we can conclude that countries with higher GDP score higher on the happiness index because greater economic growth implies higher health expectancy and freedom to make independent choices
 
