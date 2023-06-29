@@ -160,11 +160,21 @@ ggplot(year2018sub, aes(x = GDP.per.capita, y = Freedom )) +
 ggsave("GDP_vs_Freedom.png", width = 15, height = 7)
 
 # Since there was no clear relation between GDP and freedom, we decided to verify it using Pearson Correlation Test
+
+# Testing our Hypothesis 1
+# Hypothesis 1: There is a strong re;ation between GDP per capita and Freedom 
+# H0: there is a strong correlation between the GDP per Capita and Freedom
+# H1: there is a weak/low correlationbetween GDP per Capita and Freedom 
 cor.test(year2018sub$GDP.per.capita, year2018sub$Freedom)
-# The test returned a value of 0.33 indicating a low level of correlation between the two variables
-# Applying the same test to GDP and Life expectancy
+# The test returned a value of 0.33 indicating a low level of correlation between the two variables. Thus, we can reject our Null Hypothesis(H0). 
+
+# Testing our Hypothesis 2
+# Hypothesis 2: There is a strong re;ation between GDP per capita and Life Expectancy.  
+# H0: there is a strong correlation between the GDP per Capita and Life Expectancy
+# H1: there is a weak/low correlationbetween GDP per Capita and Life Expectancy 
 cor.test(year2018sub$GDP.per.capita, year2018sub$Life_expectancy)
-# The test returned a value of 0.84 indicating a high level of correlation between the two variables
+# The test returned a value of 0.84 indicating a high level of correlation between the two variables. Thus, our Null Hypothesis can be accepeted. 
+
 # Extracting GDP and Happiness score
 GDPandHAPPINESS <- cbind(year2018sub, year_2018$Score)
 GDPandHAPPINESS
@@ -173,13 +183,14 @@ glimpse(GDPandHAPPINESS2)
 GDPandHAPPINESS3 <- GDPandHAPPINESS2[ , c("GDP.per.capita", "year_2018$Score" )]
 table(GDPandHAPPINESS3)
 glimpse(GDPandHAPPINESS3)
+
 # Using scatterplot to analyse the relation between GDP and Happiness rank
 plot(x= GDPandHAPPINESS3$GDP.per.capita, y = GDPandHAPPINESS3$year_2018Score, xlab = "GDP", ylab = "Happiness rank", main = "Relation between GDP and Happiness index rank")
+# Comment on graph
 # The plot shows a negative relationship between the two variables i.e, with Happiness ratings falling as GDP rises.
 # saving the graph
 ggsave("GDP_vs_Happiness_Rank.png", width = 15, height = 7)
-# Closing the above plot
-dev.off()
+
 # Analysing the relation between Development category and Happiness Score
 COUNTRYandSCORE <- GDPandHAPPINESS[ , c(5, 6)]
 COUNTRYandSCORE
@@ -190,15 +201,17 @@ glimpse(COUNTRYandSCORE)
 levels(COUNTRYandSCORE$Development)
 COUNTRYandSCORE$Development <- factor((COUNTRYandSCORE$Development), levels = c("Underdeveloped", "Developing", "Developed"))
 levels(COUNTRYandSCORE$Development)
+
 # Plotting GDP against Happiness scores of different countries
 barplot(table(COUNTRYandSCORE$Development), main = "Development levels related to the Happiness Score")
+# Comment on graph 
 # We can clearly see that Underdeveloped nations have higher happiness score as compared to the countries who are developed.
-# Closing the above plot
-dev.off()
-# Hypothesis Testing: GDP per Capita & Happiness Score
+
+# Testing our Hypothesis 3
+# Hypothesis 2: There is a strong re;ation between GDP per capita and Happiness Score
 # H0: there is no correlation between the GDP per Capita and Happiness Score
-# H1: there is a strong correlation: GDP per Capita ~ Happiness Score
-# We applied the linear model testing to test our hypothesis
+# H1: there is a strong correlation: GDP per Capita and Happiness Score
+# We applied the linear model testing to test our hypothesis ## apply correlation
 GDPandHAPPINESS3 %>%
   lm(GDP.per.capita ~ `year_2018$Score`, data = .) %>% summary()
 # The test returned a very small p-value (2e-16) and a R-squared of 0.64 indicating strong correlation between GDP per Capita & Happiness Score
