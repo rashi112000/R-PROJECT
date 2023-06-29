@@ -49,10 +49,11 @@
 # Load the installed packages so that they are available for us to use
 library(tidyverse)
 
-year_2018 <- read.csv("2018.csv", header = TRUE)
+# Importing data
+year_2018 <- read.csv("data/2018.csv")
 year_2018
 
-# Applying more functions to have an idea of the variables type and number of observations observations
+# Applying more functions to have an idea of the variables type and number of observations 
 
 # View the characteristics of the dataset such as # of columns, # of rows, Variable names and their associated data types
 glimpse(year_2018)
@@ -637,8 +638,7 @@ ggplot(year2018sub, aes(x = GDP.per.capita, y = Freedom )) +
 # Saving the graph
 ggsave("GDP_vs_Freedom.png", width = 15, height = 7)
 
-# Since there was no clear relation between GDP and freedom, we decided to verify it using Pearson Correlation Test
-
+# Testing our hypotheses 
 # Testing our Hypothesis 1
 # Hypothesis 1: There is a strong re;ation between GDP per capita and Freedom 
 # H0: there is a strong correlation between the GDP per Capita and Freedom
@@ -690,7 +690,6 @@ barplot(table(COUNTRYandSCORE$Development), main = "Development levels related t
 # H0: there is no correlation between the GDP per Capita and Happiness Score
 # H1: there is a strong correlation: GDP per Capita and Happiness Score
 
-# We applied the correlation test to prove our hypothesis
 GDPandHAPPINESS3
 cor.test(GDPandHAPPINESS3$GDP.per.capita, GDPandHAPPINESS3$`year_2018$Score`)
 # The test returned a value of 0.80 indicating strong correlation between GDP per Capita & Happiness Score
