@@ -166,7 +166,9 @@ ggplot(year2018sub, aes(x = GDP.per.capita, y = Freedom )) +
 # Saving the graph
 ggsave("GDP_vs_Freedom.png", width = 15, height = 7)
 
-# Since there was no clear relation between GDP and freedom, we decided to verify it using Pearson Correlation Test
+# There is no clear relation between GDP and Freedom. 
+
+# Hypothesis Testing 
 
 # Testing our Hypothesis 1
 # Hypothesis 1: There is a strong re;ation between GDP per capita and Freedom 
@@ -215,7 +217,7 @@ barplot(table(COUNTRYandSCORE$Development), main = "Development levels related t
 # We can clearly see that Underdeveloped nations have higher happiness score as compared to the countries who are developed.
 
 # Testing our Hypothesis 3
-# Hypothesis 2: There is a strong re;ation between GDP per capita and Happiness Score
+# Hypothesis 3: There is a strong re;ation between GDP per capita and Happiness Score
 # H0: there is no correlation between the GDP per Capita and Happiness Score
 # H1: there is a strong correlation: GDP per Capita and Happiness Score
 # We applied the linear model testing to test our hypothesis ## apply correlation
