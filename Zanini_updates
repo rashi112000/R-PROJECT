@@ -11,6 +11,13 @@
 # The healthy life expectancy measures how long people may expect to live in excellent health
 # The freedom to make decisions in life demonstrates how much control and autonomy people have over their lives,
 # and finally, The perception of corruption helps us to understand how prevalent it is in that society.
+
+# Aim of our study is to understand how GDP per capita affects Freedom to make Life decisions, Life expectancy and Happiness Score. 
+# We are testing our 3 Hypothesis.
+# Hypothesis 1: There is a strong relation between GDP per capita and Freedom 
+# Hypothesis 2: There is a strong relation between GDP per capita and Life Expectancy 
+# Hypothesis 3: There is a strong relation between GDP per capita and Happiness Score
+
 # The information included in the dataset includes the following variables:
 # Overall rank: the number of total countries observed
 # Quantitative - numeric
